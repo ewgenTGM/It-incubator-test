@@ -11,16 +11,16 @@ const array = [
 btn.disabled = true;
 
 searchInput.addEventListener('input', (e) => {
-	btn.disabled = e.target.value === '';
+	btn.disabled = e.target.value.trim() === '';
 });
 
 btn.addEventListener('click', (e) => {
 	e.preventDefault();
-	if (searchInput.value.toLowerCase() === 'google') {
+	if (isGoolge(searchInput.value)) {
 		showAlertWithDelayAndFormLock('Yandex круче. Но это не точно', 3000);
 	} else {
 		showAlertWithDelayAndFormLock(
-			'Ваш запрос: ' + searchInput.value +
+			'Ваш запрос: "' + searchInput.value + '"' +
 			'\nПервый ( 0 ) элемент массива: name = ' + array[0]['name'],
 			3000
 		);
@@ -28,14 +28,10 @@ btn.addEventListener('click', (e) => {
 	//searchInput.value = '';
 });
 
-const showAlert = (message) => {
-	alert(message);
-};
-
 const showAlertWithDelayAndFormLock = (message, delay) => {
 	formLock();
 	setTimeout(() => {
-		showAlert(message);
+		alert(message);
 		formUnlock();
 	}, delay);
 };
@@ -72,6 +68,8 @@ const minMaxFinder = (array) =>{
 	console.log('max', max);
 }
 
-//minMaxFinder(generateNumericArray(10));
+minMaxFinder(generateNumericArray(10));
 
 const findMax = (array) => Math.max(...array);
+
+const isGoolge = (query) => query.trim().toLowerCase() === 'google';
