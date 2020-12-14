@@ -20,7 +20,8 @@ btn.addEventListener('click', (e) => {
 		showAlertWithDelayAndFormLock('Yandex круче. Но это не точно', 3000);
 	} else {
 		showAlertWithDelayAndFormLock(
-			'Первый ( 0 ) элемент массива: name = ' + array[0]['name'],
+			'Ваш запрос: ' + searchInput.value +
+			'\nПервый ( 0 ) элемент массива: name = ' + array[0]['name'],
 			3000
 		);
 	}
@@ -50,3 +51,27 @@ const formUnlock = () => {
 };
 
 const superSum = (a, b) => (typeof (a + b) === 'number' ? a + b : NaN);
+
+const generateNumericArray = (elementCount)=>{
+	const numericArray = [];
+	for (let index = 0; index < elementCount; index++) {
+		numericArray[index] = Math.floor(Math.random() * 100);		
+	}
+	return numericArray;
+}
+
+const minMaxFinder = (array) =>{
+	let min = array[0];
+	let max = array[0];
+	for (let index = 0; index < array.length; index++) {
+		min = min > array[index] ? array[index] : min;
+		max = max < array[index] ? array[index] : max;
+	}
+	console.log('Array:', array);
+	console.log('min', min);
+	console.log('max', max);
+}
+
+//minMaxFinder(generateNumericArray(10));
+
+const findMax = (array) => Math.max(...array);

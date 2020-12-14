@@ -4,7 +4,8 @@
 html {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.wrapper {
+.container {
+	margin: 0 auto;
 	max-width: 1200px;
 	min-height: 100vh;
 	display: flex;
